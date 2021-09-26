@@ -1,5 +1,6 @@
 <script>
 export default {
+  name: "Card",
   props: {
     category: { type: String, default: "" },
     description: { type: String, default: "" },
@@ -34,9 +35,11 @@ export default {
         <p class="card-text">
           {{ truncateText(description, 100) }}
         </p>
+      </div>
+      <div class="card-footer">
         <p class="text-end mb-0">
-          <a href="#">
-            <small>Read more...</small>
+          <a href="#" class="text-success">
+            <small>Read more</small>
           </a>
         </p>
       </div>

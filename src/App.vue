@@ -14,7 +14,6 @@ export default {
       );
       const payload = await response.json();
       categoryData.value = payload.categories;
-      console.log(categoryData.value);
     }
 
     getData();
@@ -27,7 +26,7 @@ export default {
 <template>
   <div class="container d-flex flex-column justify-content-center">
     <!-- Search bar -->
-    <p class="text-center fs-1 fw-bold text-primary mt-5">Foody Receipt</p>
+    <p class="text-center fs-1 fw-bold text-success mt-5">Receipt Site</p>
 
     <div class="row mt-2 mb-4">
       <div class="col-10">
@@ -38,7 +37,7 @@ export default {
         />
       </div>
       <div class="col-2">
-        <button type="button" class="btn btn-outline-primary btn-lg w-100">
+        <button type="button" class="btn btn-outline-success btn-lg w-100">
           🔍 Search
         </button>
       </div>
