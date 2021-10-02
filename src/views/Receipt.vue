@@ -1,24 +1,26 @@
 <script>
 import { ref } from "vue";
+import { useRoute } from "vue-router";
 import Card from "@/components/Card.vue";
 
 export default {
-  name: "Home",
+  name: "Receipt",
   components: { Card },
   setup() {
-    const categoryData = ref([]);
+    const route = useRoute();
+    const receiptData = ref([]);
 
-    async function getCategoryData() {
+    async function getReceipt() {
       const response = await fetch(
-        "https://www.themealdb.com/api/json/v1/1/categories.php"
+        `https://www.themealdb.com/api/json/v1/1/filter.php?c=${route.params.category}`
       );
       const payload = await response.json();
-      categoryData.value = payload.categories;
+      receiptData.value = payload.meals;
     }
 
-    getCategoryData();
+    getReceipt();
 
-    return { Card, categoryData };
+    return { receiptData, route };
   },
 };
 </script>
@@ -26,7 +28,9 @@ export default {
 <template>
   <div class="container d-flex flex-column justify-content-center">
     <!-- Search bar -->
-    <p class="text-center fs-1 fw-bold text-success mt-5">Receipt Site</p>
+    <p class="text-center fs-1 fw-bold text-success mt-5">
+      {{ route.params.category }}
+    </p>
 
     <div class="row mt-2 mb-4">
       <div class="col-10">
@@ -44,17 +48,13 @@ export default {
     </div>
 
     <!-- Card component list -->
-    <div class="row row-cols-1 row-cols-md-5 g-4 mt-3">
+    <div class="row row-cols-1 row-cols-md-4 g-4 mt-3">
       <Card
-        v-for="data in categoryData"
-        :key="data.idCategory"
-        :category="data.strCategory"
-        :description="data.strCategoryDescription"
-        :image="data.strCategoryThumb"
-        :link="`/receipt/${data.strCategory}`"
+        v-for="data in receiptData"
+        :key="data.idMeal"
+        :category="data.strMeal"
+        :image="data.strMealThumb"
       />
     </div>
   </div>
 </template>
-
-<style></style>

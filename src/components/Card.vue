@@ -5,6 +5,7 @@ export default {
     category: { type: String, default: "" },
     description: { type: String, default: "" },
     image: { type: String, default: "" },
+    link: { type: String, default: "" },
   },
   setup() {
     const truncateText = (str, length, ending) => {
@@ -38,9 +39,9 @@ export default {
       </div>
       <div class="card-footer">
         <p class="text-end mb-0">
-          <a href="#" class="text-success">
+          <router-link :to="link" class="text-success">
             <small>Read more</small>
-          </a>
+          </router-link>
         </p>
       </div>
     </div>
