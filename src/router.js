@@ -4,6 +4,7 @@ import Home from "@/views/Home.vue";
 import About from "@/views/About.vue";
 import Receipt from "@/views/Receipt.vue";
 import Detail from "@/views/Detail.vue";
+import NotFound from "@/views/NotFound.vue";
 
 const routes = [
   {
@@ -25,6 +26,11 @@ const routes = [
     path: "/about",
     name: "About",
     component: About,
+  },
+  {
+    path: "/:pathMatch(.*)*",
+    name: "NotFound",
+    component: NotFound,
   },
 ];
 

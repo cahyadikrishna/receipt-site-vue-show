@@ -8,6 +8,7 @@ export default {
   components: { Card },
   setup() {
     const route = useRoute();
+
     const receiptData = ref([]);
 
     async function getReceipt() {
@@ -48,7 +49,7 @@ export default {
     </div>
 
     <!-- Card component list -->
-    <div class="row row-cols-1 row-cols-md-4 g-4 mt-3">
+    <div class="row row-cols-1 row-cols-md-6 g-4 mt-3">
       <Card
         v-for="data in receiptData"
         :key="data.idMeal"
