@@ -18,7 +18,12 @@ const routes = [
     component: Receipt,
   },
   {
-    path: "/detail",
+    path: "/receipt",
+    name: "Receipt List",
+    component: Receipt,
+  },
+  {
+    path: "/detail/:id",
     name: "Detail",
     component: Detail,
   },

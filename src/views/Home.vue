@@ -1,24 +1,32 @@
 <script>
 import { ref } from "vue";
 import Card from "@/components/Card.vue";
+import api from "@/api/api.js";
+import { useRouter } from "vue-router";
 
 export default {
   name: "Home",
   components: { Card },
-  setup() {
+  setup(_, { emit }) {
+    const router = useRouter();
     const categoryData = ref([]);
+    const keyword = ref("");
 
-    async function getCategoryData() {
-      const response = await fetch(
-        "https://www.themealdb.com/api/json/v1/1/categories.php"
-      );
-      const payload = await response.json();
-      categoryData.value = payload.categories;
+    async function gotoPageSearchData() {
+      if (keyword.value !== "") {
+        router.push(`/receipt?keyword=${keyword.value}`);
+      }
     }
 
+    async function getCategoryData() {
+      emit("loadingStatus", true);
+      const payload = await api("/categories.php", "GET");
+      categoryData.value = payload.categories;
+      emit("loadingStatus", false);
+    }
     getCategoryData();
 
-    return { Card, categoryData };
+    return { Card, categoryData, gotoPageSearchData, keyword };
   },
 };
 </script>
@@ -34,10 +42,15 @@ export default {
           class="form-control form-control-lg"
           type="text"
           placeholder="Search here..."
+          v-model="keyword"
         />
       </div>
       <div class="col-2">
-        <button type="button" class="btn btn-outline-success btn-lg w-100">
+        <button
+          @click="gotoPageSearchData"
+          type="button"
+          class="btn btn-outline-success btn-lg w-100"
+        >
           🔍 Search
         </button>
       </div>
