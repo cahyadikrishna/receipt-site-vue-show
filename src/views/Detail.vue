@@ -58,7 +58,7 @@ export default {
   </div>
 </template>
 
-<style>
+<style scoped>
 .detail-img-size {
   width: 100%;
   height: auto;

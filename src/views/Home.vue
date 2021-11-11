@@ -36,8 +36,8 @@ export default {
     <!-- Search bar -->
     <p class="text-center fs-1 fw-bold text-success mt-5">Receipt Site</p>
 
-    <div class="row mt-2 mb-4">
-      <div class="col-10">
+    <div class="row mt-2 mb-md-4">
+      <div class="col-12 col-md-10">
         <input
           class="form-control form-control-lg"
           type="text"
@@ -45,7 +45,7 @@ export default {
           v-model="keyword"
         />
       </div>
-      <div class="col-2">
+      <div class="col-12 col-md-2 mt-2 mt-md-0">
         <button
           @click="gotoPageSearchData"
           type="button"
