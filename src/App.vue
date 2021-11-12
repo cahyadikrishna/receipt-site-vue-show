@@ -2,9 +2,10 @@
 import { ref } from "vue";
 import Footer from "@/components/Footer.vue";
 import Loading from "@/components/Loading.vue";
+import Header from "@/components/Header.vue";
 
 export default {
-  components: { Footer, Loading },
+  components: { Footer, Loading, Header },
   setup() {
     const loading = ref(false);
 
@@ -13,7 +14,7 @@ export default {
       loading.value = status;
     }
 
-    return { loading, Footer, updateLoadingStatus, Loading };
+    return { loading, updateLoadingStatus };
   },
 };
 </script>
@@ -21,6 +22,7 @@ export default {
 <template>
   <Loading v-if="loading" />
   <div v-show="loading === false">
+    <Header />
     <router-view @loadingStatus="updateLoadingStatus" />
     <Footer />
   </div>

@@ -7,7 +7,6 @@ export default {
   name: "Detail",
   setup(_, { emit }) {
     const route = useRoute();
-
     const data = ref([]);
     const ingredients = ref([]);
 
@@ -26,7 +25,6 @@ export default {
           );
         }
       }
-      console.log(data.value.strInstructions);
 
       emit("loadingStatus", false);
     }
@@ -41,18 +39,22 @@ export default {
   <div class="container">
     <p class="text-center fs-1 fw-bold text-success my-5">{{ data.strMeal }}</p>
     <div class="row">
-      <div class="col-12 col-md-8">
+      <div class="col-12 col-md-5">
         <img
           class="detail-img-size"
           :src="data.strMealThumb"
           alt="receipt image"
         />
       </div>
-      <div class="col-12 col-md-4">
-        <li v-for="ingredients in ingredients">
-          {{ ingredients }}
-        </li>
-        <p class="mt-4">{{ data.strInstructions }}</p>
+      <div class="col-12 col-md-7">
+        <p class="mt-4 mt-md-0 mb-3 fw-bold fs-5">Ingredients:</p>
+        <ul>
+          <li v-for="ingredients in ingredients">
+            {{ ingredients }}
+          </li>
+        </ul>
+        <p class="mb-3 fw-bold fs-5">Steps:</p>
+        <p>{{ data.strInstructions }}</p>
       </div>
     </div>
   </div>

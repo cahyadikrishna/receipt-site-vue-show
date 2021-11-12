@@ -1,12 +1,13 @@
 <script>
 import { ref } from "vue";
 import { useRoute, useRouter } from "vue-router";
-import Card from "@/components/Card.vue";
 import api from "@/api/api.js";
+import Card from "@/components/Card.vue";
+import Search from "@/components/Search.vue";
 
 export default {
   name: "Receipt",
-  components: { Card },
+  components: { Card, Search },
   setup(_, { emit }) {
     const route = useRoute();
     const router = useRouter();
@@ -41,39 +42,21 @@ export default {
       getReceipt();
     }
 
-    return { receiptData, route, searchData, gotoPageSearchData, keyword };
+    return { receiptData, keyword, route, searchData, gotoPageSearchData };
   },
 };
 </script>
 
 <template>
   <div class="container d-flex flex-column justify-content-center">
-    <!-- Search bar -->
+    <!-- Search Section -->
     <p class="text-center fs-1 fw-bold text-success mt-5">
       {{ route.params.category || route.query.keyword }}
     </p>
 
-    <div class="row mt-2 mb-4">
-      <div class="col-10">
-        <input
-          class="form-control form-control-lg"
-          type="text"
-          placeholder="Search here..."
-          v-model="keyword"
-        />
-      </div>
-      <div class="col-2">
-        <button
-          @click="gotoPageSearchData"
-          type="button"
-          class="btn btn-outline-success btn-lg w-100"
-        >
-          🔍 Search
-        </button>
-      </div>
-    </div>
+    <Search />
 
-    <!-- Card component list -->
+    <!-- Card List Section -->
     <div class="row row-cols-1 row-cols-md-6 g-4 mt-3">
       <Card
         v-for="data in receiptData"
