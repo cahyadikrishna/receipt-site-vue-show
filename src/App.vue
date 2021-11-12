@@ -20,9 +20,9 @@ export default {
 </script>
 
 <template>
+  <Header />
   <Loading v-if="loading" />
   <div v-show="loading === false">
-    <Header />
     <router-view @loadingStatus="updateLoadingStatus" />
     <Footer />
   </div>
