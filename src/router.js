@@ -2,7 +2,7 @@ import { createWebHistory, createRouter } from "vue-router";
 
 import Home from "@/views/Home.vue";
 import About from "@/views/About.vue";
-import Receipt from "@/views/Receipt.vue";
+import Recipe from "@/views/Recipe.vue";
 import Detail from "@/views/Detail.vue";
 import NotFound from "@/views/NotFound.vue";
 
@@ -13,14 +13,14 @@ const routes = [
     component: Home,
   },
   {
-    path: "/receipt/:category",
-    name: "Receipt",
-    component: Receipt,
+    path: "/recipe/:category",
+    name: "Recipe",
+    component: Recipe,
   },
   {
-    path: "/receipt",
-    name: "Receipt List",
-    component: Receipt,
+    path: "/recipe",
+    name: "Recipe List",
+    component: Recipe,
   },
   {
     path: "/detail/:id",

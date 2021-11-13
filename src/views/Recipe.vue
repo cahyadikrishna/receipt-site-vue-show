@@ -6,43 +6,38 @@ import Card from "@/components/Card.vue";
 import Search from "@/components/Search.vue";
 
 export default {
-  name: "Receipt",
+  name: "Recipe",
   components: { Card, Search },
   setup(_, { emit }) {
     const route = useRoute();
     const router = useRouter();
-    const receiptData = ref([]);
+    const recipeData = ref([]);
     const keyword = ref("");
 
     async function searchData(query = "") {
       emit("loadingStatus", true);
       const payload = await api(`/search.php?s=${query}`, "GET");
-      receiptData.value = payload.meals;
+      recipeData.value = payload.meals;
       emit("loadingStatus", false);
     }
 
-    async function gotoPageSearchData() {
-      router.push(`/receipt?keyword=${keyword.value}`);
-      searchData(keyword.value);
-    }
-
-    async function getReceipt() {
+    async function getRecipe() {
       emit("loadingStatus", true);
       const payload = await api(
         `/filter.php?c=${route.params.category}`,
         "GET"
       );
-      receiptData.value = payload.meals;
+      recipeData.value = payload.meals;
       emit("loadingStatus", false);
     }
 
     if (route.query && route.query.keyword) {
       searchData(route.query.keyword);
     } else {
-      getReceipt();
+      getRecipe();
     }
 
-    return { receiptData, keyword, route, searchData, gotoPageSearchData };
+    return { recipeData, keyword, route, searchData };
   },
 };
 </script>
@@ -54,12 +49,12 @@ export default {
       {{ route.params.category || route.query.keyword }}
     </p>
 
-    <Search />
+    <Search @search="searchData" />
 
     <!-- Card List Section -->
     <div class="row row-cols-1 row-cols-md-6 g-4 mt-3">
       <Card
-        v-for="data in receiptData"
+        v-for="data in recipeData"
         :key="data.idMeal"
         :category="data.strMeal"
         :image="data.strMealThumb"

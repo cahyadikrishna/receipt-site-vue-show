@@ -37,7 +37,7 @@ export default {
         :category="data.strCategory"
         :description="data.strCategoryDescription"
         :image="data.strCategoryThumb"
-        :link="`/receipt/${data.strCategory}`"
+        :link="`/recipe/${data.strCategory}`"
       />
     </div>
   </div>

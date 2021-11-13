@@ -1,4 +1,4 @@
-# Receipt Site
+# Recipes Site
 
 Project for learn how top use Vue 3 + Vite, and also implement the Composition API
 

@@ -43,7 +43,7 @@ export default {
         <img
           class="detail-img-size"
           :src="data.strMealThumb"
-          alt="receipt image"
+          alt="recipe image"
         />
       </div>
       <div class="col-12 col-md-7">

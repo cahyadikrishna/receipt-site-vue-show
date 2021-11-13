@@ -10,7 +10,6 @@ export default {
     const loading = ref(false);
 
     function updateLoadingStatus(status) {
-      console.log(status);
       loading.value = status;
     }
 

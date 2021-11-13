@@ -1,6 +1,6 @@
 {
-  "name": "simple-receipt-site",
-  "version": "0.0.0",
+  "name": "simple-recipes-site",
+  "version": "1.0.0",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

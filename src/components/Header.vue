@@ -14,7 +14,7 @@ export default {
           width="30"
           height="24"
         />
-        Receipt Page
+        Recipes Page
       </router-link>
       <button
         class="navbar-toggler"
