@@ -10,9 +10,10 @@ export default {
     const data = ref([]);
     const ingredients = ref([]);
 
+    // Get the detail, ingredients list, and the measerure units
+    // from API
     async function getDetailData() {
       emit("loadingStatus", true);
-
       const payload = await api(`/lookup.php?i=${route.params.id}`);
       data.value = payload.meals[0];
       for (let i = 1; i <= 20; i++) {
@@ -25,7 +26,6 @@ export default {
           );
         }
       }
-
       emit("loadingStatus", false);
     }
     getDetailData();

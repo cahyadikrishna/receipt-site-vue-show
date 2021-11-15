@@ -1,6 +1,6 @@
 <script>
 import { ref } from "vue";
-import { useRoute, useRouter } from "vue-router";
+import { useRoute } from "vue-router";
 import api from "@/api/api.js";
 import Card from "@/components/Card.vue";
 import Search from "@/components/Search.vue";
@@ -10,7 +10,6 @@ export default {
   components: { Card, Search },
   setup(_, { emit }) {
     const route = useRoute();
-    const router = useRouter();
     const recipeData = ref([]);
     const keyword = ref("");
 
